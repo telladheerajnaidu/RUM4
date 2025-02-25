@@ -3,19 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Not Found</title>
+    <title>RUM Test - 404 Simulation</title>
+
+    <!-- RUM Script -->
+    <script src="https://g.3gl.net/jp/12603/latest/InitialLoadScript.js" async=""></script>
+
     <script>
-        // Example: Insert your RUM script here
+        // Example: Insert an additional RUM script if needed
         (function() {
             var script = document.createElement("script");
-            script.src = "https://g.3gl.net/jp/12603/latest/InitialLoadScript.js";  // Replace with actual RUM script URL
+            script.src = "https://g.3gl.net/jp/12603/latest/InitialLoadScript.js";  
             script.async = true;
             document.head.appendChild(script);
         })();
+
+        // Fetch a nonexistent page to simulate a 404 error
+        fetch('/nonexistent-page')
+        .then(response => console.log('Status:', response.status)) // Should log 404
+        .catch(error => console.log('Request failed:', error));
     </script>
 </head>
 <body>
-    <h1>404 - Not Found</h1>
-    <p>This is an intentional error for RUM testing.</p>
+    <h1>RUM Testing with 404 Simulation</h1>
+    <p>This page is for testing RUM tracking while ensuring a 404 request is logged.</p>
 </body>
 </html>
